@@ -1,1 +1,1 @@
-# Bakend APP for LKS Kabupaten Kendal 2024
+# Sample Bakend APP
