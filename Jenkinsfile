@@ -15,7 +15,7 @@ pipeline {
                 }
             }
             steps {
-
+                sh 'npm i'
             }
         }
         stage('Build docker image') {
