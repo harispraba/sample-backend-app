@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                docker.build 'sample-backend:latest'
+                script{
+                    dockerImage = docker.build 'sample-backend:latest'
+                }
             }
         }
         stage('Test') {
