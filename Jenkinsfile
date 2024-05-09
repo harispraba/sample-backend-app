@@ -1,12 +1,12 @@
 pipeline {
     dockerImage = ''
-    
+
     agent any
 
     stages {
         stage('Build') {
             steps {
-                dockerImage = docker.build sample-backend:latest
+                dockerImage = docker.build 'sample-backend:latest'
             }
         }
         stage('Test') {
