@@ -35,7 +35,7 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage('Push to Artifact Registry') {
             steps {
                 script{
                     docker.withRegistry('https://asia-southeast2-docker.pkg.dev', 'SA_KEY_AR') {
