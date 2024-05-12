@@ -1,6 +1,10 @@
+def dockerImage = ''
+
 pipeline {
     environment {
-        dockerImage = ''
+        registry_url = 'asia-southeast2-docker.pkg.dev/rect-devops-training/rectgistry/'
+        app_name = 'sample-backend'
+        app_version = '0.0.1'
     }
 
     agent any
@@ -21,7 +25,8 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script{
-                    dockerImage = docker.build 'sample-backend:latest'
+                    tag = registry_url+app_name+':'+app_version
+                    dockerImage = docker.build tag
                 }
             }
         }
@@ -32,7 +37,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                docker.withRegistry('https://asia-southeast2-docker.pkg.dev', 'SA_KEY_AR') {
+                    dockerImage.push()
+                }
             }
         }
     }
