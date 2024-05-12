@@ -37,8 +37,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                docker.withRegistry('https://asia-southeast2-docker.pkg.dev', 'SA_KEY_AR') {
-                    dockerImage.push()
+                script{
+                    docker.withRegistry('https://asia-southeast2-docker.pkg.dev', 'SA_KEY_AR') {
+                        dockerImage.push()
+                    }
                 }
             }
         }
