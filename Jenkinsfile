@@ -30,11 +30,6 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
         stage('Push to Artifact Registry') {
             steps {
                 script{
