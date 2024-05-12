@@ -30,19 +30,5 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script{
-                    docker.withRegistry('https://asia-southeast2-docker.pkg.dev', 'SA_KEY_AR') {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
     }
 }
