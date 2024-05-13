@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
                 sh 'env'
-                sh 'kubectl get nodes'
+                sh 'kubectl apply -f deployment/manifest.yaml'
             }
         }
     }
