@@ -42,7 +42,7 @@ pipeline {
             agent {
                 docker {
                     image 'bitnami/kubectl'
-                    args '-e KUBECONFIG=$kubeconfig -e GOOGLE_APPLICATION_CREDENTIALS=$gke-service-account'
+                    args "-e KUBECONFIG=$kubeconfig -e GOOGLE_APPLICATION_CREDENTIALS=$gke-service-account --entrypoint=''"
                 }
             }
             steps {
