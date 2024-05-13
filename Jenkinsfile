@@ -14,7 +14,6 @@ pipeline {
             agent {
                 docker {
                     image 'node:20-alpine'
-                    label 'node-agent'
                     args  '-v /tmp:/tmp'
                 }
             }
@@ -30,11 +29,6 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
         stage('Push to Artifact Registry') {
             steps {
                 script{
@@ -42,6 +36,17 @@ pipeline {
                         dockerImage.push()
                     }
                 }
+            }
+        }
+        stage ('Deploy Kubernetes') {
+            agent {
+                docker {
+                    image 'bitnami/kubectl'
+                    args '-e KUBECONFIG=$kubeconfig -e GOOGLE_APPLICATION_CREDENTIALS=gke-service-account'
+                }
+            }
+            steps {
+                sh 'kubectl get nodes'
             }
         }
     }
