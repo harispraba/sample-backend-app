@@ -15,7 +15,7 @@ pipeline {
         stage ('Deploy Kubernetes') {
             agent {
                 docker {
-                    image 'bitnami/kubectl'
+                    image 'harispraba/kubectl'
                     args '--entrypoint=""'
                 }
             }
