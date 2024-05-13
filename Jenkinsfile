@@ -46,7 +46,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'kubectl get nodes'
+                sh 'get nodes'
             }
         }
     }
