@@ -5,6 +5,8 @@ pipeline {
         registry_url = 'asia-southeast2-docker.pkg.dev/rect-devops-training/rectgistry/'
         app_name = 'sample-backend'
         app_version = '0.0.1'
+        KUBECONFIG = credentials('kubeconfig')
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('gke-service-account')
     }
 
     agent any
@@ -14,7 +16,7 @@ pipeline {
             agent {
                 docker {
                     image 'bitnami/kubectl'
-                    args '-e KUBECONFIG=$kubeconfig -e GOOGLE_APPLICATION_CREDENTIALS=$gke-service-account --entrypoint=""'
+                    args '--entrypoint=""'
                 }
             }
             steps {
