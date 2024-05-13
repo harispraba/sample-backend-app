@@ -5,7 +5,7 @@ pipeline {
         registry_url = 'asia-southeast2-docker.pkg.dev/rect-devops-training/rectgistry/'
         app_name = 'sample-backend'
         app_version = '0.0.1'
-        KUBECONFIG = credentials('kubeconfig')
+        KUBECONFIG = credentials('kubeconfig-file')
         GOOGLE_APPLICATION_CREDENTIALS = credentials('gke-service-account')
     }
 
