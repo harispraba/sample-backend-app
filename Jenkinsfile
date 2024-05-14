@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Pushing image') {
             steps {
-                echo 'Push image to AR....'
+                echo 'Push image to AR...'
             }
         }
         stage('Deploy') {
