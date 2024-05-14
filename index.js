@@ -13,7 +13,7 @@ var corsOptions = {
 }
 
 app.get("/", (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World tambah!')
 });
 
 app.post("/add", (req, res) => {
